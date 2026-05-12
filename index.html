@@ -1,11 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>My First App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yu | Self Introduction</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050507;
+      --panel: rgba(18, 18, 24, 0.78);
+      --text: #f7f7fb;
+      --muted: #b7b7c6;
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --line: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(124, 92, 255, 0.26), transparent 30%),
+        radial-gradient(circle at 82% 14%, rgba(0, 212, 255, 0.2), transparent 28%),
+        linear-gradient(135deg, #050507 0%, #101018 54%, #030305 100%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      overflow-x: hidden;
+    }
+
+    .profile-card {
+      width: min(100%, 980px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+      padding: clamp(28px, 5vw, 64px);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: var(--panel);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
+      backdrop-filter: blur(20px);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 22px;
+      padding: 8px 14px;
+      border: 1px solid rgba(124, 92, 255, 0.4);
+      border-radius: 999px;
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(124, 92, 255, 0.08);
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: clamp(2.6rem, 8vw, 5.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+    }
+
+    h1 span {
+      display: block;
+      color: transparent;
+      background: linear-gradient(90deg, var(--text), var(--accent-2), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .lead {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.8;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+      list-style: none;
+    }
+
+    .tags li {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: #e9e9f2;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.92rem;
+    }
+
+    .image-frame {
+      aspect-ratio: 1 / 1.12;
+      border-radius: 28px;
+      padding: 10px;
+      background: linear-gradient(145deg, rgba(124, 92, 255, 0.9), rgba(0, 212, 255, 0.65), rgba(255, 255, 255, 0.08));
+      box-shadow: 0 22px 60px rgba(0, 212, 255, 0.13);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 22px;
+      filter: saturate(1.05) contrast(1.08);
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 18px;
+      }
+
+      .profile-card {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        border-radius: 24px;
+      }
+
+      .image-frame {
+        order: -1;
+        max-height: 440px;
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      .tags {
+        gap: 10px;
+      }
+
+      .tags li {
+        font-size: 0.86rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, 優！</h1>
-  <p>これはウチと優が作った初めてのWebページだよ✨</p>
+  <main class="profile-card" aria-label="自己紹介">
+    <section class="profile-copy">
+      <p class="eyebrow">Self Introduction</p>
+      <h1>こんにちは、<span>優です。</span></h1>
+      <p class="lead">
+        黒をベースにしたクールな雰囲気が好きです。アイデアを形にすること、
+        新しい技術に触れること、そして見る人の印象に残るWeb体験づくりを楽しんでいます。
+      </p>
+      <ul class="tags" aria-label="好きなこと">
+        <li>Web Design</li>
+        <li>Creative Coding</li>
+        <li>Minimal UI</li>
+      </ul>
+    </section>
+
+    <figure class="image-frame">
+      <img
+        src="profile-image.svg"
+        alt="ネオンカラーで描いたクールな抽象ポートレート画像"
+      >
+    </figure>
+  </main>
 </body>
 </html>
